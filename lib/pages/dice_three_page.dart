@@ -9,7 +9,11 @@ class DiceThreePage extends StatefulWidget {
 }
 
 class _DiceThreePageState extends State<DiceThreePage> {
-
+  var diceOneIcon = DiceIcons.dice0;
+  var diceTwoIcon = DiceIcons.dice0;
+  int total = 0;
+  int playerOneScore = 0;
+  int playerTwoScore = 0;
 
   IconData getDiceIcon(int number) {
     if (number == 1) {
