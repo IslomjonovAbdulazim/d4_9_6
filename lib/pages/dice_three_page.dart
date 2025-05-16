@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:dice_icons/dice_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DiceThreePage extends StatefulWidget {
@@ -18,6 +19,8 @@ class _DiceThreePageState extends State<DiceThreePage> {
   int playerTwoScore = 0;
   bool turn = true;
   int count = 0;
+  double progressOne = 0;
+  double progressTwo = 0;
 
   void randomDice() {
     final random1 = Random().nextInt(6) + 1;
@@ -28,8 +31,10 @@ class _DiceThreePageState extends State<DiceThreePage> {
     if (turn) {
       playerOneScore += total;
       count += 1;
+      progressOne = playerOneScore / (count * 12);
     } else {
       playerTwoScore += total;
+      progressTwo = playerTwoScore / (count * 12);
     }
     turn = !turn;
     setState(() {});
@@ -56,12 +61,51 @@ class _DiceThreePageState extends State<DiceThreePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Level 3"),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Center(
             child: Column(
-              children: [],
+              children: [
+                Row(
+                  children: [
+                    Text("Count: $count,  "),
+                    Text("Turn: Player ${turn ? 1 : 2}"),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(diceOneIcon, size: 90),
+                    Icon(diceTwoIcon, size: 90),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Text("Total: $total"),
+                SizedBox(height: 10),
+                CupertinoButton(
+                  color: Colors.yellow,
+                  onPressed: () {
+                    randomDice();
+                  },
+                  child: Center(child: Text("Roll the Dice")),
+                ),
+                SizedBox(height: 30),
+                Text(
+                    "Player 1: $playerOneScore, ${(progressOne * 100).toStringAsFixed(2)}%"),
+                SizedBox(height: 5),
+                LinearProgressIndicator(value: progressOne),
+                SizedBox(height: 30),
+                Text(
+                    "Player 2: $playerTwoScore, ${(progressTwo * 100).toStringAsFixed(2)}%"),
+                SizedBox(height: 5),
+                LinearProgressIndicator(value: progressTwo),
+              ],
             ),
           ),
         ),
