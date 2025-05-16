@@ -23,7 +23,7 @@ class _DiceOnePageState extends State<DiceOnePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
-                      DiceIcons.dice1,
+                      DiceIcons.dice3,
                       size: 90,
                     ),
                     Icon(
@@ -31,6 +31,14 @@ class _DiceOnePageState extends State<DiceOnePage> {
                       size: 90,
                     )
                   ],
+                ),
+                SizedBox(height: 20),
+                Text(
+                  "Total: 7",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
                 SizedBox(height: 20),
                 CupertinoButton(
