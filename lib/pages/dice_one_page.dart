@@ -1,3 +1,5 @@
+import 'package:dice_icons/dice_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DiceOnePage extends StatefulWidget {
@@ -8,7 +10,6 @@ class DiceOnePage extends StatefulWidget {
 }
 
 class _DiceOnePageState extends State<DiceOnePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +18,26 @@ class _DiceOnePageState extends State<DiceOnePage> {
           padding: EdgeInsets.all(20),
           child: Center(
             child: Column(
-              children: [],
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      DiceIcons.dice1,
+                      size: 90,
+                    ),
+                    Icon(
+                      DiceIcons.dice6,
+                      size: 90,
+                    )
+                  ],
+                ),
+                SizedBox(height: 20),
+                CupertinoButton(
+                  onPressed: () {},
+                  child: Text("Roll the Dice"),
+                ),
+              ],
             ),
           ),
         ),
