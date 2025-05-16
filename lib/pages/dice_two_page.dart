@@ -15,6 +15,13 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
   final dices = <IconData>[];
   int total = 0;
 
+  @override
+  void initState() {
+    dices.add(DiceIcons.dice0);
+    randomDice();
+    super.initState();
+  }
+
   IconData getDiceIcon(int number) {
     if (number == 1) {
       return DiceIcons.dice1;
@@ -65,6 +72,7 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
                           color: Colors.green,
                           padding: EdgeInsets.zero,
                           onPressed: () {
+                            if (dices.length == 5) return;
                             dices.add(DiceIcons.dice1);
                             randomDice();
                           },
@@ -75,6 +83,7 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
                           color: Colors.red,
                           padding: EdgeInsets.zero,
                           onPressed: () {
+                            if (dices.length == 1) return;
                             dices.removeLast();
                             randomDice();
                           },
