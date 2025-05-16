@@ -88,9 +88,9 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
                         height: 90,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: 8,
+                          itemCount: dices.length,
                           itemBuilder: (context, index) {
-                            return Icon(DiceIcons.dice3, size: 90);
+                            return Icon(dices[index], size: 90);
                           },
                         ),
                       ),
