@@ -1,4 +1,6 @@
-`import 'package:dice_icons/dice_icons.dart';
+import 'dart:math';
+
+import 'package:dice_icons/dice_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,34 @@ class DiceTwoPage extends StatefulWidget {
 }
 
 class _DiceTwoPageState extends State<DiceTwoPage> {
+  final dices = <IconData>[];
+  int total = 0;
+
+  IconData getDiceIcon(int number) {
+    if (number == 1) {
+      return DiceIcons.dice1;
+    } else if (number == 2) {
+      return DiceIcons.dice2;
+    } else if (number == 3) {
+      return DiceIcons.dice3;
+    } else if (number == 4) {
+      return DiceIcons.dice4;
+    } else if (number == 5) {
+      return DiceIcons.dice5;
+    } else if (number == 6) {
+      return DiceIcons.dice6;
+    } else {
+      return DiceIcons.dice0;
+    }
+  }
+
+  void randomDice() {
+    for (int i = 0; i < dices.length; i++) {
+      final random = Random().nextInt(6) + 1;
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,4 +101,3 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
     );
   }
 }
-`
