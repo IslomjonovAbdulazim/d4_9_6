@@ -1,3 +1,5 @@
+`import 'package:dice_icons/dice_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DiceTwoPage extends StatefulWidget {
@@ -11,12 +13,57 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Level 2"),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Center(
             child: Column(
-              children: [],
+              children: [
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        CupertinoButton(
+                          color: Colors.green,
+                          padding: EdgeInsets.zero,
+                          onPressed: () {},
+                          child: Icon(CupertinoIcons.add),
+                        ),
+                        SizedBox(height: 10),
+                        CupertinoButton(
+                          color: Colors.red,
+                          padding: EdgeInsets.zero,
+                          onPressed: () {},
+                          child: Icon(CupertinoIcons.minus),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: SizedBox(
+                        height: 90,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 8,
+                          itemBuilder: (context, index) {
+                            return Icon(DiceIcons.dice3, size: 90);
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                CupertinoButton(
+                  color: Colors.yellow,
+                  onPressed: () {},
+                  child: Center(child: Text("Roll the Dice")),
+                ),
+              ],
             ),
           ),
         ),
@@ -24,3 +71,4 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
     );
   }
 }
+`
