@@ -105,6 +105,11 @@ class _DiceThreePageState extends State<DiceThreePage> {
                     "Player 2: $playerTwoScore, ${(progressTwo * 100).toStringAsFixed(2)}%"),
                 SizedBox(height: 5),
                 LinearProgressIndicator(value: progressTwo),
+
+                if (turn == false) ... {
+                  SizedBox(height: 30),
+                  Text("Player Two Turn!"),
+                }
               ],
             ),
           ),
