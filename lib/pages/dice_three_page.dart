@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dice_icons/dice_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +16,24 @@ class _DiceThreePageState extends State<DiceThreePage> {
   int total = 0;
   int playerOneScore = 0;
   int playerTwoScore = 0;
+  bool turn = true;
+  int count = 0;
+
+  void randomDice() {
+    final random1 = Random().nextInt(6) + 1;
+    diceOneIcon = getDiceIcon(random1);
+    final random2 = Random().nextInt(6) + 1;
+    diceTwoIcon = getDiceIcon(random2);
+    total = random1 + random2;
+    if (turn) {
+      playerOneScore += total;
+      count += 1;
+    } else {
+      playerTwoScore += total;
+    }
+    turn = !turn;
+    setState(() {});
+  }
 
   IconData getDiceIcon(int number) {
     if (number == 1) {
