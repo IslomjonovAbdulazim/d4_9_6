@@ -34,10 +34,14 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
   }
 
   void randomDice() {
+    total = 0;
     for (int i = 0; i < dices.length; i++) {
       final random = Random().nextInt(6) + 1;
-
+      final icon = getDiceIcon(random);
+      dices[i] = icon;
+      total += random;
     }
+    setState(() {});
   }
 
   @override
@@ -60,14 +64,20 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
                         CupertinoButton(
                           color: Colors.green,
                           padding: EdgeInsets.zero,
-                          onPressed: () {},
+                          onPressed: () {
+                            dices.add(DiceIcons.dice1);
+                            randomDice();
+                          },
                           child: Icon(CupertinoIcons.add),
                         ),
                         SizedBox(height: 10),
                         CupertinoButton(
                           color: Colors.red,
                           padding: EdgeInsets.zero,
-                          onPressed: () {},
+                          onPressed: () {
+                            dices.removeLast();
+                            randomDice();
+                          },
                           child: Icon(CupertinoIcons.minus),
                         ),
                       ],
@@ -88,9 +98,19 @@ class _DiceTwoPageState extends State<DiceTwoPage> {
                   ],
                 ),
                 SizedBox(height: 20),
+                Text(
+                  "Dices: ${dices.length} = $total",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(height: 20),
                 CupertinoButton(
                   color: Colors.yellow,
-                  onPressed: () {},
+                  onPressed: () {
+                    randomDice();
+                  },
                   child: Center(child: Text("Roll the Dice")),
                 ),
               ],
